@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kejutan Spesial untuk Caca 🎁</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/kejutan.css">
+</head>
+<body class="kejutan-page">
+  <canvas id="confetti"></canvas>
+
+  <div class="balloons" aria-hidden="true">
+    <span class="balloon b1">🎈</span>
+    <span class="balloon b2">🎈</span>
+    <span class="balloon b3">🎈</span>
+    <span class="balloon b4">🎈</span>
+    <span class="balloon b5">🎈</span>
+    <span class="balloon b6">🎈</span>
+  </div>
+
+  <main class="kejutan-wrap">
+    <section class="hero">
+      <p class="sparkles">🎁 ✨ 🎈</p>
+      <h1 class="title">Ada Kejutan <span class="highlight">Spesial</span></h1>
+      <p class="hero-sub">Khusus buat kamu, Caca 💖</p>
+    </section>
+
+    <section aria-label="Galeri foto kenangan">
+      <h2 class="section-title">📷 Galeri Kenangan</h2>
+      <div class="gallery">
+        <figure class="photo-card">
+          <img src="assets/foto1.jpg" alt="Foto kenangan pertama"
+               onerror="this.closest('.photo-card').classList.add('empty'); this.remove();">
+          <figcaption>Momen Bahagia #1</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="assets/foto2.jpg" alt="Foto kenangan kedua"
+               onerror="this.closest('.photo-card').classList.add('empty'); this.remove();">
+          <figcaption>Momen Bahagia #2</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="assets/foto3.jpg" alt="Foto kenangan ketiga"
+               onerror="this.closest('.photo-card').classList.add('empty'); this.remove();">
+          <figcaption>Momen Bahagia #3</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="note-card ucapan" aria-label="Ucapan">
+      <h2>💌 Ucapan</h2>
+      <p>
+        Selamat ulang tahun, Caca! 🎂 Semoga di usia yang baru ini hidupmu
+        dipenuhi tawa yang lebih sering, mimpi yang makin dekat, dan
+        kebahagiaan yang tak terhitung. Terima kasih sudah menjadi sosok yang
+        begitu berarti. Nikmati harimu yang spesial — dunia terasa lebih indah
+        karena ada kamu! ✨
+      </p>
+    </section>
+
+    <section class="note-card kesan" aria-label="Kesan dan pesan">
+      <h2>🌟 Kesan &amp; Pesan</h2>
+      <p>
+        Bertemu dan mengenalmu adalah salah satu hal terindah yang pernah
+        terjadi. Terima kasih untuk semua kenangan, tawa, dan kebaikan yang
+        pernah kamu bagikan. Tetaplah menjadi dirimu sendiri — pribadi yang
+        hangat, kuat, dan menyenangkan hati semua orang di sekitarmu. Jangan
+        pernah berhenti bermimpi, karena kamu layak meraih semuanya. 🌟
+      </p>
+    </section>
+
+    <section class="note-card doa" aria-label="Doa terbaik">
+      <h2>🤲 Doa Terbaik</h2>
+      <p>
+        Di hari istimewa ini, aku mendoakan yang terbaik untukmu: semoga Tuhan
+        senantiasa melindungimu di setiap langkah, kesehatan selalu
+        menghampiri, rezekimu dilancarkan, dan hatimu dipenuhi ketenangan.
+        Panjang umur, sehat selalu, dan semoga setiap doa baikmu dikabulkan
+        pada waktunya. Aamiin. 🤲💖
+      </p>
+    </section>
+
+    <a class="back-btn" href="index.html">← Kembali ke Halaman Utama</a>
+  </main>
+
+  <button id="musicToggle" aria-label="Nyalakan/matikan musik" title="Musik">🔊</button>
+
+  <script src="js/music.js"></script>
+  <script src="js/confetti.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+CARA MENAMBAHKAN FOTO KE HALAMAN KEJUTAN
+=========================================
+
+1. Siapkan 3 foto kenangan terbaik untuk Caca.
+2. Ubah nama filennya menjadi persis:
+   foto1.jpg
+   foto2.jpg
+   foto3.jpg
+3. Taruh ketiga file itu di folder "assets" ini.
+4. Jalankan:
+   git add assets
+   git commit -m "feat: tambahkan foto galeri kejutan"
+   git push origin main
+5. Halaman https://rofiwahyu.github.io/ucapan-ultahv2/kejutan.html
+   otomatis menampilkan fotonya dalam 1-2 menit.
+
+Catatan:
+- Foto akan otomatis ter-crop rasio 3:4, jadi pilih foto dengan
+  objek di tengah agar tidak terpotong pentingnya.
+- Jika ingin mengganti caption, edit file kejutan.html pada bagian
+  <figcaption>.
