@@ -103,6 +103,21 @@
     showPhoto(currentIndex);
     overlay.classList.add("open");
     document.body.style.overflow = "hidden";
+    markViewed(card);
+  }
+
+  var viewedPhotos = [];
+  var celebrated = false;
+
+  function markViewed(card) {
+    if (viewedPhotos.indexOf(card) === -1) viewedPhotos.push(card);
+    var total = activePhotos().length;
+    if (!celebrated && total > 0 && viewedPhotos.length >= total) {
+      celebrated = true;
+      if (typeof window.confettiCelebration === "function") {
+        window.confettiCelebration();
+      }
+    }
   }
 
   function closeLightbox() {

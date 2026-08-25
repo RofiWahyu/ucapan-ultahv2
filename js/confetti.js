@@ -5,11 +5,10 @@
   var ctx = canvas.getContext("2d");
 
   var COLORS = ["#f6d365", "#fda085", "#fbc2eb", "#a18cd1", "#ffffff"];
-  var RAIN_COUNT = 26;
-  var BURST_COUNT = 16;
 
   var W, H;
   var pieces = [];
+  var running = false;
 
   function rand(min, max) {
     return min + Math.random() * (max - min);
@@ -27,79 +26,34 @@
   window.addEventListener("resize", resize);
   resize();
 
-  function rainPiece(fromTop) {
+  function newPiece(x, y, spreadX) {
+    var angle = rand(-Math.PI * 0.92, -Math.PI * 0.08);
+    var speed = rand(7, 15);
     return {
-      type: "rain",
-      x: rand(0, W),
-      y: fromTop ? rand(-H * 0.2, -20) : rand(-H, H),
-      w: rand(6, 13),
-      h: rand(8, 16),
-      color: pickColor(),
-      vy: rand(0.8, 2.4),
-      vx: rand(-0.6, 0.6),
-      rot: rand(0, Math.PI * 2),
-      vr: rand(-0.08, 0.08),
-      swayPhase: rand(0, Math.PI * 2),
-      swaySpeed: rand(0.01, 0.03),
-      swayAmp: rand(0.4, 1.4)
-    };
-  }
-
-  function burstPiece() {
-    var angle = rand(-Math.PI, 0);
-    var speed = rand(6, 15);
-    return {
-      type: "burst",
-      x: W / 2,
-      y: H * 0.38,
-      w: rand(6, 13),
-      h: rand(8, 16),
+      x: x + rand(-spreadX, spreadX),
+      y: y,
+      w: rand(6, 12),
+      h: rand(8, 15),
       color: pickColor(),
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
       rot: rand(0, Math.PI * 2),
-      vr: rand(-0.15, 0.15),
-      gravity: rand(0.12, 0.22)
+      vr: rand(-0.14, 0.14),
+      gravity: rand(0.16, 0.26)
     };
   }
 
-  function burst() {
-    for (var i = 0; i < BURST_COUNT; i++) pieces.push(burstPiece());
+  function burst(x, y, count, spreadX) {
+    for (var i = 0; i < count; i++) pieces.push(newPiece(x, y, spreadX));
+    startLoop();
   }
-
-  for (var i = 0; i < RAIN_COUNT; i++) pieces.push(rainPiece(false));
-  burst();
 
   function update(p) {
-    p.swayPhase += p.swaySpeed;
-    p.x += p.vx + Math.sin(p.swayPhase) * p.swayAmp;
+    p.vy += p.gravity;
+    p.vx *= 0.992;
+    p.x += p.vx;
     p.y += p.vy;
     p.rot += p.vr;
-
-    if (p.type === "burst") {
-      p.vy += p.gravity;
-      p.vx *= 0.985;
-      if (p.vy > 0 && p.y > H + 30) replace(p);
-    } else if (p.y > H + 30) {
-      replace(p);
-    }
-  }
-
-  function replace(p) {
-    var fresh = rainPiece(true);
-    p.type = fresh.type;
-    p.x = fresh.x;
-    p.y = fresh.y;
-    p.color = fresh.color;
-    p.w = fresh.w;
-    p.h = fresh.h;
-    p.vy = fresh.vy;
-    p.vx = fresh.vx;
-    p.rot = fresh.rot;
-    p.vr = fresh.vr;
-    p.swayPhase = fresh.swayPhase;
-    p.swaySpeed = fresh.swaySpeed;
-    p.swayAmp = fresh.swayAmp;
   }
 
   function draw(p) {
@@ -111,26 +65,35 @@
     ctx.restore();
   }
 
-  var hidden = false;
-
-  document.addEventListener("visibilitychange", function () {
-    hidden = document.hidden;
-  });
-
-  function frame() {
-    if (!hidden) {
-      ctx.clearRect(0, 0, W, H);
-      for (var j = 0; j < pieces.length; j++) {
-        update(pieces[j]);
-        draw(pieces[j]);
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    for (var j = pieces.length - 1; j >= 0; j--) {
+      update(pieces[j]);
+      draw(pieces[j]);
+      if (pieces[j].y > H + 40 || pieces[j].x < -60 || pieces[j].x > W + 60) {
+        pieces.splice(j, 1);
       }
     }
-    window.requestAnimationFrame(frame);
+    if (pieces.length) {
+      window.requestAnimationFrame(loop);
+    } else {
+      running = false;
+    }
   }
 
-  frame();
+  function startLoop() {
+    if (!running) {
+      running = true;
+      window.requestAnimationFrame(loop);
+    }
+  }
 
-  window.setInterval(function () {
-    if (!hidden) burst();
-  }, 24000);
+  function celebration() {
+    burst(W / 2, H * 0.72, 16, 30);
+    window.setTimeout(function () { burst(W * 0.16, H * 0.85, 12, 24); }, 300);
+    window.setTimeout(function () { burst(W * 0.84, H * 0.85, 12, 24); }, 600);
+    window.setTimeout(function () { burst(W / 2, H * 0.55, 14, 40); }, 1100);
+  }
+
+  window.confettiCelebration = celebration;
 })();
