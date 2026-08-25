@@ -5,8 +5,8 @@
   var ctx = canvas.getContext("2d");
 
   var COLORS = ["#f6d365", "#fda085", "#fbc2eb", "#a18cd1", "#ffffff"];
-  var RAIN_COUNT = 50;
-  var BURST_COUNT = 35;
+  var RAIN_COUNT = 26;
+  var BURST_COUNT = 16;
 
   var W, H;
   var pieces = [];
@@ -132,5 +132,5 @@
 
   window.setInterval(function () {
     if (!hidden) burst();
-  }, 15000);
+  }, 24000);
 })();
