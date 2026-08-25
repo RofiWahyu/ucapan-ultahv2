@@ -11,6 +11,9 @@ body {
 
 body {
   font-family: "Segoe UI", "Poppins", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 50%, #ffe0d1 100%);
   background-size: 300% 300%;
   animation: gradientShift 12s ease infinite;
@@ -111,7 +114,7 @@ body {
 .title {
   font-size: clamp(30px, 7vw, 52px);
   color: #ffffff;
-  text-shadow: 0 3px 12px rgba(120, 70, 160, 0.55);
+  text-shadow: 0 2px 4px rgba(90, 50, 130, 0.3);
   line-height: 1.2;
 }
 
@@ -121,22 +124,13 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 3px 8px rgba(200, 130, 40, 0.35));
-  animation: pulseGlow 2.4s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); }
 }
 
 .name {
   margin-top: 10px;
   font-size: clamp(26px, 6vw, 44px);
   color: #fff0f6;
-  text-shadow: 0 3px 14px rgba(190, 80, 140, 0.6);
-  animation: pulseGlow 2.4s ease-in-out infinite;
-  animation-delay: 0.4s;
+  text-shadow: 0 2px 4px rgba(150, 60, 110, 0.3);
 }
 
 .message {
@@ -144,7 +138,27 @@ body {
   font-size: clamp(15px, 2.6vw, 19px);
   line-height: 1.65;
   color: #ffffff;
-  text-shadow: 0 2px 8px rgba(110, 70, 150, 0.5);
+  text-shadow: 0 1px 3px rgba(90, 50, 130, 0.25);
+}
+
+.surprise-btn {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 14px 34px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #f6d365, #fda085);
+  color: #7a3b00;
+  font-size: clamp(15px, 2.6vw, 18px);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  box-shadow: 0 10px 24px rgba(200, 130, 40, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.surprise-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 14px 30px rgba(200, 130, 40, 0.45);
 }
 
 #musicToggle {
