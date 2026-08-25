@@ -28,18 +28,19 @@
 
     <section aria-label="Galeri foto kenangan">
       <h2 class="section-title">📷 Galeri Kenangan</h2>
+      <p class="hint">💡 Klik foto untuk memperbesar</p>
       <div class="gallery">
-        <figure class="photo-card">
+        <figure class="photo-card reveal">
           <img src="assets/foto1.jpg" alt="Foto kenangan pertama"
                onerror="this.closest('.photo-card').classList.add('empty'); this.remove();">
           <figcaption>Momen Bahagia #1</figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card reveal">
           <img src="assets/foto2.jpg" alt="Foto kenangan kedua"
                onerror="this.closest('.photo-card').classList.add('empty'); this.remove();">
           <figcaption>Momen Bahagia #2</figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card reveal">
           <img src="assets/foto3.jpg" alt="Foto kenangan ketiga"
                onerror="this.closest('.photo-card').classList.add('empty'); this.remove();">
           <figcaption>Momen Bahagia #3</figcaption>
@@ -47,7 +48,7 @@
       </div>
     </section>
 
-    <section class="note-card ucapan" aria-label="Ucapan">
+    <section class="note-card ucapan reveal" aria-label="Ucapan" title="Klik untuk kejutan hati">
       <h2>💌 Ucapan</h2>
       <p>
         Selamat ulang tahun, Caca! 🎂 Semoga di usia yang baru ini hidupmu
@@ -58,7 +59,7 @@
       </p>
     </section>
 
-    <section class="note-card kesan" aria-label="Kesan dan pesan">
+    <section class="note-card kesan reveal" aria-label="Kesan dan pesan" title="Klik untuk kejutan hati">
       <h2>🌟 Kesan &amp; Pesan</h2>
       <p>
         Bertemu dan mengenalmu adalah salah satu hal terindah yang pernah
@@ -69,7 +70,7 @@
       </p>
     </section>
 
-    <section class="note-card doa" aria-label="Doa terbaik">
+    <section class="note-card doa reveal" aria-label="Doa terbaik" title="Klik untuk kejutan hati">
       <h2>🤲 Doa Terbaik</h2>
       <p>
         Di hari istimewa ini, aku mendoakan yang terbaik untukmu: semoga Tuhan
@@ -80,12 +81,13 @@
       </p>
     </section>
 
-    <a class="back-btn" href="index.html">← Kembali ke Halaman Utama</a>
+    <a class="back-btn reveal" href="index.html">← Kembali ke Halaman Utama</a>
   </main>
 
   <button id="musicToggle" aria-label="Nyalakan/matikan musik" title="Musik">🔊</button>
 
   <script src="js/music.js"></script>
   <script src="js/confetti.js"></script>
+  <script src="js/interaksi.js"></script>
 </body>
 </html>
