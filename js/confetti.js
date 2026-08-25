@@ -5,8 +5,8 @@
   var ctx = canvas.getContext("2d");
 
   var COLORS = ["#f6d365", "#fda085", "#fbc2eb", "#a18cd1", "#ffffff"];
-  var RAIN_COUNT = 120;
-  var BURST_COUNT = 90;
+  var RAIN_COUNT = 50;
+  var BURST_COUNT = 35;
 
   var W, H;
   var pieces = [];
@@ -111,16 +111,26 @@
     ctx.restore();
   }
 
+  var hidden = false;
+
+  document.addEventListener("visibilitychange", function () {
+    hidden = document.hidden;
+  });
+
   function frame() {
-    ctx.clearRect(0, 0, W, H);
-    for (var j = 0; j < pieces.length; j++) {
-      update(pieces[j]);
-      draw(pieces[j]);
+    if (!hidden) {
+      ctx.clearRect(0, 0, W, H);
+      for (var j = 0; j < pieces.length; j++) {
+        update(pieces[j]);
+        draw(pieces[j]);
+      }
     }
     window.requestAnimationFrame(frame);
   }
 
   frame();
 
-  window.setInterval(burst, 8000);
+  window.setInterval(function () {
+    if (!hidden) burst();
+  }, 15000);
 })();
