@@ -291,14 +291,14 @@
 
 @media (min-width: 1024px) {
   .lightbox img {
-    max-width: min(76vw, 1000px);
-    max-height: 84vh;
+    max-width: min(52vw, 560px);
+    max-height: 70vh;
     border-radius: 22px;
   }
 
   .lightbox figcaption {
-    font-size: 20px;
-    margin-top: 16px;
+    font-size: 19px;
+    margin-top: 14px;
   }
 
   .lb-close { top: 26px; right: 26px; width: 52px; height: 52px; font-size: 26px; }
