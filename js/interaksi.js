@@ -64,21 +64,10 @@
     overlay.className = "lightbox";
     overlay.setAttribute("role", "dialog");
     overlay.setAttribute("aria-label", "Pratinjau foto");
-    overlay.innerHTML =
-      '<button class="lb-close" aria-label="Tutup">\u00D7</button>' +
-      '<button class="lb-prev" aria-label="Foto sebelumnya">\u2039</button>' +
-      "<figure><img alt=\"\"><figcaption></figcaption></figure>" +
-      '<button class="lb-next" aria-label="Foto berikutnya">\u203A</button>';
+    overlay.innerHTML = "<figure><img alt=\"\"><figcaption></figcaption></figure>";
     lbImg = overlay.querySelector("img");
     lbCaption = overlay.querySelector("figcaption");
 
-    overlay.querySelector(".lb-close").addEventListener("click", closeLightbox);
-    overlay.querySelector(".lb-prev").addEventListener("click", function () {
-      stepLightbox(-1);
-    });
-    overlay.querySelector(".lb-next").addEventListener("click", function () {
-      stepLightbox(1);
-    });
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) closeLightbox();
     });
